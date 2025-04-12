@@ -7,7 +7,8 @@ export class ExclusiveAccount extends DioAccount {
 
     deposit = (money: number): void => {
         if(this.getValidateStatus()) {
-            this.balance += (money + 10);
+            const currentBalance = this.getBalance();
+            this.setBalance(currentBalance + money + 10);
             console.log(`Você depositou ${money} reais`);
         } else {
             console.log('Depósito inválido.');
