@@ -27,8 +27,13 @@ export abstract class DioAccount {
     }
   }
 
-  withdraw = (): void => {
-    console.log('Voce sacou')
+  withdraw = (money:number): void => {
+    if(this.validateStatus() && this.balance >= money) {
+      this.balance -= money
+      console.log(`Voce sacou ${money} reais`)
+    } else {
+      console.log('Saque inválido.')
+    }
   }
 
   getBalance = (): void => {
